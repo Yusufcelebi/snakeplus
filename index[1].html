@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Snakebound — Snake + roguelike + deckbuilder">
+  <title>Snakebound</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">◈</span><div><strong>SNAKEBOUND</strong><small>GRID • DECK • SURVIVE</small></div></div>
+    <div class="run-meta">
+      <span>RUN <b id="run">01</b></span><span>FLOOR <b id="floor">01</b></span><span>GOLD <b id="gold">25</b></span>
+    </div>
+    <button id="newRun" class="ghost">NEW RUN</button>
+  </header>
+
+  <main class="layout">
+    <aside class="panel left">
+      <div class="panel-title">SNAKE CORE <span id="status">READY</span></div>
+      <div class="stat"><span>HP</span><b id="hp">100 / 100</b></div>
+      <div class="bar"><i id="hpBar"></i></div>
+      <div class="stat"><span>LENGTH</span><b id="length">5</b></div>
+      <div class="stat"><span>ARMOR</span><b id="armor">0</b></div>
+      <div class="stat"><span>ENERGY</span><b id="energy">3</b></div>
+      <div class="mini-title">RELICS</div>
+      <div id="relics" class="relics"></div>
+      <div class="mini-title">CONTROLS</div>
+      <p class="hint">WASD / Arrow Keys<br>Space: draw & play card<br>R: restart room</p>
+    </aside>
+
+    <section class="game-panel">
+      <div class="room-head">
+        <div><span class="eyebrow">CURRENT ROOM</span><h1 id="roomTitle">THE VERDANT MAZE</h1></div>
+        <div class="room-type" id="roomType">EXPLORATION</div>
+      </div>
+      <div class="board-wrap">
+        <canvas id="board" width="720" height="720" aria-label="Snake oyun alanı"></canvas>
+        <div id="overlay" class="overlay">
+          <div class="overlay-card">
+            <span class="eyebrow">SNAKEBOUND</span>
+            <h2>THE RUN BEGINS</h2>
+            <p>Collect shards, survive encounters and build a deck around your growing body.</p>
+            <button id="start" class="primary">START RUN</button>
+          </div>
+        </div>
+      </div>
+      <div class="legend"><span>◆ portal</span><span>✦ shard</span><span>⚔ battle</span><span>⬡ elite</span><span>⌂ shop</span></div>
+    </section>
+
+    <aside class="panel right">
+      <div class="panel-title">ENCOUNTER</div>
+      <div id="encounter" class="encounter empty">No enemy detected.</div>
+      <div class="mini-title">DECK <span id="deckCount">8</span></div>
+      <div id="hand" class="hand"></div>
+      <div class="mini-title">COMBAT LOG</div>
+      <div id="log" class="log"></div>
+    </aside>
+  </main>
+
+  <div id="rewardModal" class="modal hidden">
+    <div class="modal-card">
+      <span class="eyebrow">ROOM CLEARED</span>
+      <h2>CHOOSE A CARD</h2>
+      <p>One addition can change the entire run.</p>
+      <div id="rewards" class="rewards"></div>
+      <button id="skipReward" class="ghost wide">SKIP</button>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
